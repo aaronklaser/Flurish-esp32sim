@@ -61,6 +61,8 @@ jobs:
         run: ESP32SIM_VQ_NATIVE=1 cargo test --release -p esp32s3 --test machine --test virtual_stops
       - name: Build the wasm module
         run: tools/wasm-build.sh
+      - name: Flurish isolated S3 wrapper
+        run: ESP32SIM_ROM_DIR=$PWD/roms node --test web/flurish/*.test.mjs
       - name: Production WASM sections (no DWARF, profile names retained)
         run: node tools/check-wasm-sections.mjs web/wasm/esp32sim.wasm
       - name: Test the wasm module (the real build, under Node, through the page's manifests)

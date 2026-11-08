@@ -10,6 +10,8 @@ use esp_soc::web::{json_escape, WebServer};
 use esp_soc::{Machine, Soc, SocBus};
 
 mod machine;
+mod flurish;
+pub use flurish::*;
 #[cfg(any(test, feature = "psram-tests"))]
 pub mod psram_tests;
 mod network;
